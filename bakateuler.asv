@@ -1,0 +1,41 @@
+clear
+M=10;
+h=0.1;
+d=75;
+v_m=25;
+cars=zeros(1,M);
+
+%%Fall 1
+for i =1:M
+    cars(i)=d*i;
+end
+   
+for j=1:400
+    subplot(1, 2, 1);
+    hold on
+    if j>1
+    plot([j-1 j], [cars(M) cars(M)+5*h] ,'b');
+    end
+    cars(M)=cars(M)+5*h;
+   
+    
+    
+    for i=2:(M-1)
+        
+        old=cars(M-1)
+        if(cars((M-i+1)-old+5*h))>d)
+        cars(M-i)=old+v*h
+        end
+       else
+            
+    end
+      
+        
+        plot([j-1 j], [cars(M-i)  cars(M-i)+h*f(cars(M-i+1))],'b');
+        cars(M-i)=cars(M-i)+h*f(cars(M-i+1)-cars(M-i));
+    end
+   
+    
+end
+hold off
+
